@@ -1,25 +1,25 @@
 import React from 'react'
 
 const Avatar = ({ user }) => {
-  const image = `https://api.adorable.io/avatars/40/${user.email}.png`
+  const imageUrl = `https://api.adorable.io/avatars/40/${user.email}.png`
 
-    return (
-      <div
-          className="Avatar"
-          style={{
-            ...styles,
-            backgroundImage: `url(${image}`,
-          }}
-      ></div>
-    )
-  }
+  return (
+    <div
+      className="Avatar"
+      style={{
+        ...styles,
+        backgroundImage: `url(${imageUrl})`,
+      }}
+    ></div>
+  )
+}
 
 const styles = {
+  marginRight: '0.5rem',
   height: '40px',
   width: '40px',
   fontSize: '1rem',
   borderRadius: '20px',
-  marginRight: '0.5rem',
 }
 
 export default Avatar
