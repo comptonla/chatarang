@@ -1,15 +1,19 @@
 import React from 'react'
 
+import Avatar from './Avatar'
+import SignOutButton from './SignOutButton'
+
 const UserInfo = ({ user }) => {
   return (
     <div
       className="UserInfo"
       style={styles.userInfo}
     >
-      <div className="Avatar"></div>
+      <Avatar user={user} />
       <div style={styles.user}>
         {user.displayName}
       </div>
+      <SignOutButton />
     </div>
   )
 }
