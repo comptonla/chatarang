@@ -4,7 +4,7 @@ const ChatHeader = () => {
     return (
       <header
       className="ChatHeader"
-      style={styles.header}
+      style={styles.chatHeader}
       >
         <div className="roomInfo">
           <h2 style={styles.h2}>#general</h2>
@@ -16,11 +16,10 @@ const ChatHeader = () => {
 
 
 const styles = {
-  header: {
+  chatHeader: {
     backgroundColor: '#f3f3f3',
     borderBottom: '1px solid #ccc',
-    height: '3rem',
-    padding: '0 1rem',
+    padding: '0.5rem 1rem',
     display: 'flex',
     alignItems: 'center',
   },

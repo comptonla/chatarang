@@ -5,7 +5,7 @@ import MessageList from './MessageList'
 import MessageForm from './MessageForm'
 
 class Chat extends Component {
-  constructor (){
+  constructor() {
     super()
 
     this.state = {
@@ -19,7 +19,7 @@ class Chat extends Component {
           },
           body: 'Chatting up a storm, yo!',
         },
-    
+
         {
           id: 2,
           user: {
@@ -29,7 +29,7 @@ class Chat extends Component {
           },
           body: 'This guy is so annoying. I hate my job.',
         },
-      ]
+      ],
     }
   }
 
@@ -46,12 +46,11 @@ class Chat extends Component {
     this.setState({ messages })
   }
 
-
   render() {
     return (
       <div
-      className="Chat"
-      style={styles.chat}
+        className="Chat"
+        style={styles}
       >
         <ChatHeader />
         <MessageList messages={this.state.messages} />
@@ -62,12 +61,9 @@ class Chat extends Component {
 }
 
 const styles = {
-  chat: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-  },
+  flex: 1,
+  display: 'flex',
+  flexDirection: 'column',
 }
-
 
 export default Chat
