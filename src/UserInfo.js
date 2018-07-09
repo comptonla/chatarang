@@ -28,7 +28,7 @@ const styles = {
 
   user: {
     flex: 1,
-    overFlowX: 'hidden',
+    overflowX: 'hidden',
     textOverflow: 'ellipsis',
   }
 }
