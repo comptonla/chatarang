@@ -28,6 +28,8 @@ const styles = {
 
   user: {
     flex: 1,
+    overFlowX: 'hidden',
+    textOverflow: 'ellipsis',
   }
 }
 
