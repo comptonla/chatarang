@@ -3,7 +3,7 @@ import React from 'react'
 import UserInfo from './UserInfo'
 import RoomList from './RoomList'
 
-const Sidebar = ({ user, signOut }) => {
+const Sidebar = ({ user, signOut, rooms }) => {
   return (
     <aside
       className="Sidebar"
@@ -14,14 +14,14 @@ const Sidebar = ({ user, signOut }) => {
       signOut={signOut}
       />
       <h1 style={styles.h1}>XTBC 18</h1>
-      <RoomList />
+      <RoomList rooms={rooms} />
     </aside>
   )
 }
 
 const styles = {
   sidebar: {
-    backgroundColor: '#2F4F4F',
+    backgroundColor: '#333344',
     color: 'rgba(255, 255, 255, 0.8)',
     width: '12rem',
     padding: '1rem 0',
