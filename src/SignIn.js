@@ -1,38 +1,29 @@
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
-import { auth, googleProvider } from './base'
+import { auth, googleProvider, githubProvider } from './base'
 
 class SignIn extends Component {
   state = {
     email: '',
   }
 
-  authenticate = () => {
-    auth
-      .signInWithPopup(googleProvider)
-      .then(result => {
-        const { user } = result
-        this.props.handleAuth({
-          displayName: user.displayName,
-          email: user.email,
-          uid: user.uid,
-        })
-      })
+  authenticate = (provider) => {
+    auth.signInWithPopup(provider)
   }
 
-  handleChange = (ev) => {
-    this.setState({ email: ev.target.value })
-  }
+  // handleChange = (ev) => {
+  //   this.setState({ email: ev.target.value })
+  // }
 
-  handleSubmit = (ev) => {
-    ev.preventDefault()
-    this.props.handleAuth({
-      uid: `${this.state.email}-ksdfjhu32472398`,
-      displayName: this.state.email,
-      email: this.state.email,
-    })
-  }
+  // handleSubmit = (ev) => {
+  //   ev.preventDefault()
+  //   this.props.handleAuth({
+  //     uid: `${this.state.email}-ksdfjhu32472398`,
+  //     displayName: this.state.email,
+  //     email: this.state.email,
+  //   })
+  // }
 
   render() {
     return (
@@ -48,6 +39,7 @@ class SignIn extends Component {
             className={css(styles.form)}
             onSubmit={this.handleSubmit}
           >
+            <h2>Sign In</h2>
             {/* <label
               htmlFor="email"
               className={css(styles.label)}
@@ -72,9 +64,19 @@ class SignIn extends Component {
             <button
               type="button"
               className={css(styles.button)}
-              onClick={this.authenticate}
+              onClick={() => this.authenticate(googleProvider)}
             >
+              <i className={`fab fa-google ${css(styles.brandIcon)}`}></i>
               Sign in with Google
+            </button>
+
+            <button
+              type="button"
+              className={css(styles.button, styles.github)}
+              onClick={() => this.authenticate(githubProvider)}
+            >
+              <i className={`fab fa-github ${css(styles.brandIcon)}`}></i>
+              Sign in with GitHub
             </button>
           </form>
 
@@ -89,7 +91,6 @@ class SignIn extends Component {
     )
   }
 }
-
 const styles = StyleSheet.create({
   signIn: {
     display: 'flex',
@@ -97,7 +98,6 @@ const styles = StyleSheet.create({
     height: '100vh',
     backgroundColor: '#f6f6f6',
   },
-
   header: {
     backgroundColor: '#fff',
     height: '4rem',
@@ -107,15 +107,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     boxShadow: '0 1px 1px rgba(0,0,0,.1)',
   },
-
   title: {
-    color: '#483D8B',
+    color: '#2F4F4F',
     fontWeight: 400,
     textTransform: 'uppercase',
     lineHeight: '80px',
     fontSize: '2rem',
   },
-
   main: {
     flex: 1,
     textAlign: 'center',
@@ -123,23 +121,20 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     margin: '0 auto',
+    paddingBottom: '3rem',
   },
-
   form: {
     width: '40rem',
-    height: '15rem',
     backgroundColor: 'white',
     boxShadow: '0 1px 1px rgba(0,0,0,.1)',
     marginBottom: '2rem',
-    padding: '2rem 0 0',
+    paddingBottom: '2rem',
   },
-
   label: {
     display: 'block',
     textTransform: 'uppercase',
     color: '#999',
   },
-
   input: {
     width: '20rem',
     fontSize: '1.5rem',
@@ -149,27 +144,29 @@ const styles = StyleSheet.create({
     marginBottom: '1rem',
     textAlign: 'center',
     padding: '0.5rem',
-
     ':focus': {
       outline: 0,
     },
   },
-
   h2: {
     fontWeight: 'normal',
   },
-
   button: {
     display: 'block',
-    margin: '0 auto',
+    margin: '0 auto 1rem',
     padding: '1rem 2rem',
     fontSize: '1.2rem',
     borderRadius: '1rem',
-    backgroundColor: '#483D8B',
+    backgroundColor: '#ff3333',
     color: 'white',
     width: '20rem',
   },
+  github: {
+    marginBottom: 0,
+    backgroundColor: '#6e5494',
+  },
+  brandIcon: {
+    marginRight: '1rem',
+  },
 })
-
-
 export default SignIn

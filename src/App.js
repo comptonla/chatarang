@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 import './App.css'
 import Main from './Main'
 import SignIn from './SignIn'
-import auth from './base'
+
+import { auth } from './base'
 
 class App extends Component {
   constructor() {
@@ -16,7 +17,24 @@ class App extends Component {
     }
   }
 
-  handleAuth = (user) => {
+  componentDidMount() {
+    auth.onAuthStateChanged(
+      user => {
+        if (user) {
+          this.handleAuth(user)
+        } else {
+          this.handleUnauth()
+        }
+    })
+  }
+
+  handleAuth = (oAuthUser) => {
+    const user = {
+      uid: oAuthUser.uid,
+      displayName: oAuthUser.displayName,
+      email: oAuthUser.email,
+      photoUrl: oAuthUser.photoURL,
+    }
     this.setState({ user })
     localStorage.setItem('user', JSON.stringify(user))
   }
@@ -27,6 +45,9 @@ class App extends Component {
 
   signOut = () => {
     auth.signOut()
+  }
+
+  handleUnauth = () => {
     this.setState({ user: {} })
     localStorage.removeItem('user')
   }
@@ -36,14 +57,12 @@ class App extends Component {
       <div className="App">
         {
           this.signedIn()
-          ? <Main
-              user={this.state.user}
-              signOut={this.signOut}
-            />
-
-          : <SignIn handleAuth={this.handleAuth} />
+            ? <Main
+                user={this.state.user}
+                signOut={this.signOut}
+              />
+            : <SignIn />
         }
-        
       </div>
     )
   }
