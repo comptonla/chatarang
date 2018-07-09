@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import './App.css'
 import Main from './Main'
 import SignIn from './SignIn'
+import base from './base'
 
 class App extends Component {
   constructor() {

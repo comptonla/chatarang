@@ -21,7 +21,7 @@ const Sidebar = ({ user, signOut }) => {
 
 const styles = {
   sidebar: {
-    backgroundColor: '#333344',
+    backgroundColor: '#483D8B',
     color: 'rgba(255, 255, 255, 0.8)',
     width: '12rem',
     padding: '1rem 0',
