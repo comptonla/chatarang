@@ -23,7 +23,7 @@ class Main extends Component {
         defaultValue: {
           general: {
             name: 'general',
-            description: 'Chat about whatever',
+            description: 'Talk it up',
           },
         }
       }
@@ -32,6 +32,12 @@ class Main extends Component {
 
   componentWillUnmount() {
     base.removeBinding(this.roomsRef)
+  }
+
+  addRoom = room => {
+    const rooms = {...this.state.rooms}
+    rooms[room.name] = room
+    this.setState({ rooms })
   }
 
   setCurrentRoom = roomName => {
