@@ -8,22 +8,16 @@ const MessageList = ({ messages, room }) => {
       className="MessageList"
       style={styles.messageList}
     >
-      <div
-        className="roomAnnouncement"
-        style={styles.roomAnnouncement}
-      >
+      <div style={styles.roomAnnouncement}>
         <h3 style={styles.h3}>
           #{room.name}
         </h3>
-        <p>This is the very beginning of the #general room.</p>
+        <p>This is the very beginning of the #{room.name} room.</p>
       </div>
 
       {
         messages.map(msg => (
-          <Message
-            message={msg}
-            key={msg.id}
-          />
+          <Message message={msg} key={msg.id} />
         ))
       }
     </div>
@@ -44,7 +38,7 @@ const styles = {
 
   h3: {
     fontSize: '1.5rem',
-  }
+  },
 }
 
 export default MessageList

@@ -10,8 +10,8 @@ const Sidebar = ({ user, signOut, rooms, setCurrentRoom }) => {
       style={styles.sidebar}
     >
       <UserInfo
-      user={user}
-      signOut={signOut}
+        user={user}
+        signOut={signOut}
       />
       <h1 style={styles.h1}>XTBC 18</h1>
       <RoomList
@@ -30,10 +30,6 @@ const styles = {
     padding: '1rem 0',
     display: 'flex',
     flexDirection: 'column',
-  },
-
-  children: {
-    padding: '0 1rem',
   },
 
   h1: {
