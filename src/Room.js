@@ -1,43 +1,76 @@
 import React from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
-const Room = ({ roomName, setCurrentRoom }) => {
-  const handleClick = ev => {
-    ev.preventDefault()
-    setCurrentRoom(roomName)
-  }
+import Room from './Room'
 
+const RoomList = ({ rooms, showRoomForm }) => {
   return (
-    <li className={css(styles.item)} key={roomName}>
-      <a
-        href="/"
-        className={css(styles.link)}
-        onClick={handleClick}
-      >
-        {roomName}
-      </a>
-    </li>
+    <nav
+      className={`RoomList ${css(styles.roomList)}`}
+    >
+      <div className={css(styles.heading)}>
+        <h2 className={css(styles.h2)}>
+          Rooms
+        </h2>
+        <button
+          className={css(styles.button)}
+          onClick={showRoomForm}
+        >
+          <i className="fas fa-plus-circle" title="Add a room"></i>
+        </button>
+      </div>
+      <ul className={css(styles.list)}>
+        {
+          Object.keys(rooms).map(
+            roomName => (
+              <Room
+                key={roomName}
+                roomName={roomName}
+              />
+            )
+          )
+        }
+      </ul>
+    </nav>
   )
 }
 
 const styles = StyleSheet.create({
-  item: {
-    marginBottom: '0.5rem',
+  roomList: {
+    padding: '0 1rem',
   },
 
-  link: {
-    display: 'block',
-    color: 'whitesmoke',
-    textDecoration: 'none',
+  h2: {
+    fontSize: '1rem',
+  },
 
-    '::before': {
-      content: '"# "',
-    },
+  list: {
+    listStyle: 'none',
+    marginLeft: 0,
+    paddingLeft: 0,
+  },
+
+  heading: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
+  button: {
+    border: 0,
+    backgroundColor: 'transparent',
+    outline: 0,
+    padding: 0,
+    color: 'rgba(255,255,255,0.4)',
+    fontSize: '1rem',
+    cursor: 'pointer',
+    transition: 'color 0.25s ease-out',
 
     ':hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+      color: 'white',
     },
   },
+
 })
 
-export default Room
+export default RoomList

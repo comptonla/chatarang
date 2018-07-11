@@ -52,6 +52,7 @@ class Chat extends Component {
       id: `${user.uid}-${Date.now()}`,
       user,
       body,
+      createdAt: Date.now(),
     })
 
     this.setState({ messages })
@@ -63,7 +64,10 @@ class Chat extends Component {
         className="Chat"
         style={styles}
       >
-        <ChatHeader room={this.props.room} />
+        <ChatHeader
+          room={this.props.room}
+          removeRoom={this.props.removeRoom}
+        />
         <MessageList
           messages={this.state.messages}
           room={this.props.room}

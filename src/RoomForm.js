@@ -19,7 +19,7 @@ class RoomForm extends Component {
   handleSubmit = ev => {
     ev.preventDefault()
     this.props.addRoom(this.state.room)
-    this.props.hideRoomForm()
+    this.props.history.goBack()
   }
 
   render() {
@@ -69,7 +69,7 @@ class RoomForm extends Component {
               <button
                 type="button"
                 className={css(styles.button, styles.cancel)}
-                onClick={this.props.hideRoomForm}
+                onClick={this.props.history.goBack}
               >
                 Cancel
               </button>
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: '#333344',
+    color: '#ff3344',
     fontWeight: 400,
     lineHeight: '80px',
     fontSize: '2rem',
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     margin: '0 1rem',
     fontSize: '1.2rem',
     borderRadius: '1rem',
-    backgroundColor: '#333344',
+    backgroundColor: '#ff3333',
     color: 'white',
     width: '10rem',
     cursor: 'pointer',
