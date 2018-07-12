@@ -215,19 +215,6 @@ const styles = StyleSheet.create({
     width: '20rem',
   },
 
-  github: {
-    marginBottom: 0,
-    backgroundColor: '#6e5494',
-  },
-
-  brandIcon: {
-    marginRight: '1rem',
-  },
-
-  buttonGroup: {
-    marginTop: '1rem',
-  },
-
   error: {
     color: '#ff3344',
     height: '1.2rem',
